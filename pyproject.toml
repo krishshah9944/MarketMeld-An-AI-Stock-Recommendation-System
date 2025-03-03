@@ -1,0 +1,20 @@
+[project]
+name = "synergy"
+version = "0.1.0"
+description = "Synergy using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<=3.13"
+dependencies = [
+    "crewai[tools]>=0.86.0,<1.0.0"
+]
+
+[project.scripts]
+synergy = "synergy.main:run"
+run_crew = "synergy.main:run"
+train = "synergy.main:train"
+replay = "synergy.main:replay"
+test = "synergy.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
