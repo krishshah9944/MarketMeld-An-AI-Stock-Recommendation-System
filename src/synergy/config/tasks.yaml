@@ -1,0 +1,47 @@
+data_extraction_task:
+  description: >
+    Using the specialized Data Extraction Agent, retrieve a comprehensive dataset for {stock} by integrating:
+      - Real-time news and headlines via the newstool.
+      - Current stock price information (including one-day return and key financial metrics) via the stockprice tool.
+      - Additional clarifications or missing details via the search tool if needed.
+    Consolidate all retrieved information into a structured summary that covers the stock's current performance, financial health, and market sentiment.
+  expected_output: >
+    A detailed report for {stock} that includes:
+      - A list of the latest news headlines and summaries.
+      - Up-to-date stock price data and one-day return information.
+      - Key financial metrics such as balance sheet figures, income statement numbers, and cash flow details.
+      - An integrated summary highlighting overall market sentiment and significant trends.
+  agent: data_extraction_agent
+
+stock_recommendation_task:
+  description: >
+    Analyze the comprehensive dataset provided for {stock} and evaluate its financial performance, market trends, and news sentiment. 
+    Using quantitative analysis (e.g., calculating key financial ratios) and qualitative insights from recent news:
+      1. Compare the stock's current metrics against industry benchmarks and historical performance.
+      2. Identify strengths and weaknesses in the company's financial and market position.
+      3. Formulate a clear recommendation: buy, hold, or sell.
+    Provide a detailed rationale that justifies the recommendation based on the analyzed data.
+  expected_output: >
+    A clear recommendation for {stock} (buy, hold, or sell) that includes:
+      - A summary of key financial indicators and ratios.
+      - Insights and sentiment derived from recent news.
+      - Comparative analysis with industry standards and historical performance.
+      - A concise, well-supported rationale explaining the recommendation.
+  agent: stock_recommendation_agent
+
+investment_strategy_task:
+  description: >
+    Given an investment amount of {amount} and a risk appetite of {risk}, develop a diversified investment strategy by performing the following steps:
+      1. Determine the optimal number of stocks for diversification based on the risk profile.
+      2. For each candidate stock, invoke the Data Extraction Agent to retrieve detailed data and the Stock Recommendation Agent to evaluate its performance.
+      3. Aggregate and analyze the results to select the top-performing stocks suitable for diversification.
+      4. Pass the selected stocks along with the investment amount and risk parameters to the Modern Portfolio Optimization Tool (MPTTool) to compute optimal allocations.
+      5. Consolidate the findings into a comprehensive investment strategy report.
+  expected_output: >
+    A comprehensive investment strategy report that includes:
+      - A curated list of selected stocks that optimize diversification.
+      - Optimal portfolio allocations (in dollar terms) computed via Modern Portfolio Theory.
+      - A clear breakdown of how the investment amount {amount} is distributed.
+      - Detailed reasoning behind the stock selection and diversification process, aligned with the risk appetite ({risk}).
+      - Expected insights into the risk-adjusted performance of the proposed portfolio.
+  agent: investment_strategy_agent
